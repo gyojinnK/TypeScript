@@ -85,4 +85,37 @@
   - type alias를 이용하면 객체, 공용체(Union), 튜플(Tuple), 기본 타입에 별칭을 생성할 수 있음
   - type alias도 제네릭의 사용이 가능하며, 스스로 참조하는 것도 가능
 
-[  ]
+[ enum type (열거형 타입) ]
+  - 열거형 타입은 상수들을 관리하기 위한 객체로 상수의 집합을 정의. (사용자 정의 상수)
+  - 일반 객체는 속성의 변경을 허용하지만 열거형은 송석의 변경을 허용하지 않음
+  - 열거형은 속성은 기본적으로 숫자, 문자열만 허용
+  - 열거형을 이용하면 상수의 수를 제한할 수 있으며 코드의 가독성을 높일 수 있음
+  - reverse mapping기능을 제공함
+  ex)
+    enum ArrowKey{
+      UP = 1,
+      Down,
+      Left = 20,
+      Right,
+    }
+
+    console.log(ArrowKey);
+
+    <output>
+    {
+      '1':'Up',
+      '2':'Down',
+      '20':'Left',
+      '21':'Right',
+      Up: 1,
+      Down: 2,
+      Left: 20,
+      Right: 21,
+    }               //reverse mapping
+    </output>
+
+    console.log(ArrowKey.Left); ==> 20
+    console.log(ArrowKey[20]); ==> Left
+    
+  - enum(열거형 타입)은 자바스크립트로 컴파일 될 때 객체화함.
+  - enum 앞에 const가 붙으면 컴파일시 객체화하지 않으며 값을 통한 키값을 찾는 것(reverse mapping)이 불가능해짐, 상수들만 딱 모아서 사용할 수 있는 형태가 돼버림
