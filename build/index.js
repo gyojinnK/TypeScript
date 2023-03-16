@@ -8,12 +8,12 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const TodoItem_1 = __importDefault(require("./TodoItem"));
-const data = [
-    { id: 1, task: '프로세싱', complete: true },
-    { id: 2, task: 'TS 학습', complete: false },
-];
-console.log("My Todo List");
-for (let i = 0; i < data.length; i++) {
-    let todoItem = new TodoItem_1.default(data[i].id, data[i].task, data[i].complete);
-    todoItem.printDetails();
-}
+const data_1 = require("./data");
+const TodoCollection_1 = __importDefault(require("./TodoCollection"));
+const sampleTodos = data_1.data.map((item) => new TodoItem_1.default(item.id, item.task, item.complete));
+const myTodoCollection = new TodoCollection_1.default("My Todo List", sampleTodos);
+myTodoCollection.addTodo("Learn to Java");
+myTodoCollection.addTodo("Learn to TS");
+myTodoCollection.markComplete(3, true);
+console.log(`${myTodoCollection.Username}`);
+myTodoCollection.todoItems.forEach((item) => item.printDetails());
