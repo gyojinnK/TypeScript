@@ -16,10 +16,16 @@ const myTodoCollection = new TodoCollection("My Todo List", sampleTodos);
 myTodoCollection.addTodo("Learn to Java");
 myTodoCollection.addTodo("Learn to TS");
 
-myTodoCollection.markComplete(3, true);
+myTodoCollection.markComplete(4, true);
 
 
 console.log(`${myTodoCollection.Username}`);
-myTodoCollection.todoItems.forEach((item) => item.printDetails());
+
+myTodoCollection.removeComplete();
+
+myTodoCollection.getTodoItems(true).forEach((item) => item.printDetails());
+console.log("=====================================");
+myTodoCollection.getTodoItems(false).forEach((item) => item.printDetails());
+console.log("=====================================");
 
 
