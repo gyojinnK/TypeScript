@@ -4,16 +4,22 @@
 //  outDir : 컴파일된 코드(자바스크립트), rootDir : 컴파일전 tsc 소스코드
 
 import TodoItem from "./TodoItem";
+import {data} from "./data";
+import TodoCollection from "./TodoCollection";
 
-const data = [  //타입추론(type inference)로 선언과 초기화를 동시에 진행하여 data배열은 객체형식으로 자동으로 형성
-    { id : 1, task : '프로세싱', complete : true},
-    { id : 2, task : 'TS 학습', complete : false},
-]
+const sampleTodos : TodoItem[] = data.map(
+    (item) => new TodoItem(item.id, item.task, item.complete)
+);
 
-console.log("My Todo List");
-for(let i=0; i<data.length; i++){
-    let todoItem = new TodoItem(data[i].id, data[i].task, data[i].complete);
-    todoItem.printDetails();
-}
+const myTodoCollection = new TodoCollection("My Todo List", sampleTodos);
+
+myTodoCollection.addTodo("Learn to Java");
+myTodoCollection.addTodo("Learn to TS");
+
+myTodoCollection.markComplete(3, true);
+
+
+console.log(`${myTodoCollection.Username}`);
+myTodoCollection.todoItems.forEach((item) => item.printDetails());
 
 
